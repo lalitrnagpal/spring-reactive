@@ -17,8 +17,7 @@ In src/main/test folder
 3. MonoTest.java
 4. FluxAndMonoFactoryMethods.java
 5. FluxAndMonoFilterTest.java
-6. FluxAndMonoTransPlay video
-formTest.java
+6. FluxAndMonoTransformTest.java
 7. FluxAndMonoTransformTestTwo.java 
 8. FluxAndMonoCombineTest.java
 9. FluxAndMonoErrorTest.java
@@ -31,9 +30,11 @@ Non Blocking REST APIs
 14. FluxAndMonoController.java and test case for it FluxAndMonoControllerTest.java
 
 # Spring Web Flux
-( In the package com.spring.reactive.example - sub packages of router, handler and controller ) 
-15. SampleHandlerFunction.java, RouterFunctionConfig
-( In the src/main/test sub package restful.test )
-15. Test case for above SampleHandlerFunctionTest.java  
+
+15. 
+In the package com.spring.reactive.example - sub packages of router, handler and controller
+- SampleHandlerFunction.java, RouterFunctionConfig
+In the src/main/test sub package restful.test
+- Test case for above SampleHandlerFunctionTest.java  
 
 
