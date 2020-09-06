@@ -32,6 +32,13 @@ public class ItemController {
 
 	@Autowired
 	ItemReactiveRepository itemReactiveRepository;
+
+//  Put centrally into a ControllerAdvice	
+//	@ExceptionHandler(RuntimeException.class)
+//	public ResponseEntity<String> handleRuntimeException(RuntimeException rtException) {
+//		log.error("Exception caught in handleRuntimeException {} ", rtException);
+//		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(rtException.getMessage());
+//	}
 	
 	@GetMapping(ITEM_END_POINT_V1)
 	public Flux<Item> getAllItems() {
@@ -55,6 +62,12 @@ public class ItemController {
 	@DeleteMapping(ITEM_END_POINT_V1 + "/id")
 	public Mono<Void> deleteItem(@PathVariable String id) {
 		return itemReactiveRepository.deleteById(id);
+	}
+	
+	@GetMapping(ITEM_END_POINT_V1 + "/runtimeException")
+	public Flux<Item> runtimeException() {
+		return itemReactiveRepository.findAll()
+				.concatWith(Mono.error(new RuntimeException("Runtime Exception occurred")));
 	}
 	
 	@PutMapping(ITEM_END_POINT_V1 + "/id")

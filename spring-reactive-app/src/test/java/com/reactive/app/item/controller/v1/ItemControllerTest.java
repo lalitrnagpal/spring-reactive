@@ -11,6 +11,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.reactive.AutoConfigureWebTestClient;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ActiveProfiles;
@@ -172,5 +173,15 @@ public class ItemControllerTest {
 							.body(Mono.just(item), Item.class)
 							.exchange()
 							.expectStatus().isNotFound();
+	}
+	
+	@Test
+	public void runTimeException() {
+		webTestClient.get()
+					.uri(ItemConstants.ITEM_END_POINT_V1 + "/runtimeException")
+					.exchange()
+					.expectStatus().is5xxServerError()
+					.expectBody(String.class)
+					.isEqualTo("From Controller Advice: Runtime Exception occurred");
 	}
 }

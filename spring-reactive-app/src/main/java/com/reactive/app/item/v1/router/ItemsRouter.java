@@ -23,10 +23,17 @@ public class ItemsRouter {
 																			.and(RequestPredicates.accept(MediaType.APPLICATION_JSON)), itemsHandler::getOneItem )
 																.andRoute( RequestPredicates.POST(ITEM_FUNCTIONAL_END_POINT_V1 )
 																			.and(RequestPredicates.accept(MediaType.APPLICATION_JSON)), itemsHandler::createItem )
-																.andRoute( RequestPredicates.DELETE(ITEM_FUNCTIONAL_END_POINT_V1 )
+																.andRoute( RequestPredicates.DELETE(ITEM_FUNCTIONAL_END_POINT_V1  + "/{id}")
 																		.and(RequestPredicates.accept(MediaType.APPLICATION_JSON)), itemsHandler::deleteItem )
 																.andRoute( RequestPredicates.PUT(ITEM_FUNCTIONAL_END_POINT_V1 + "/{id}")
 																		.and(RequestPredicates.accept(MediaType.APPLICATION_JSON)), itemsHandler::updateItem );
+	}
+	
+	@Bean
+	public RouterFunction<ServerResponse> errorRoute(ItemsHandler itemsHandler) {
+		return RouterFunctions.route(RequestPredicates.GET("/fun/items/runtimeException")
+														.and(RequestPredicates.accept(MediaType.APPLICATION_JSON)),
+									itemsHandler::itemsException);
 	}
 
 }

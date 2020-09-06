@@ -30,7 +30,7 @@ public class ItemDataInitializer implements CommandLineRunner {
 			new Item(null, "Apple IPhone", 92.00),
 			new Item(null, "HP Laptop", 92.00),
 			new Item(null, "Bose Headphone", 92.00),
-			new Item(null, "Mercedez Benz", 999992.00)
+			new Item("MBZ", "Mercedez Benz", 999992.00)
 		);
 		return dataList;
 	} 

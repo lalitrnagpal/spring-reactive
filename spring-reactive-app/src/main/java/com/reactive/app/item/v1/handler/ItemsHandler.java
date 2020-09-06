@@ -69,4 +69,9 @@ public class ItemsHandler {
 				.switchIfEmpty(notFound);
 	}  
 	
+	public Mono<ServerResponse> itemsException(ServerRequest serverRequest) {
+		System.err.println("From ItemsHandler.itemsException method: Runtime Exception Occurred");
+		throw new RuntimeException("From ItemsHandler.itemsException method: Runtime Exception Occurred");
+	}
+	
 }
